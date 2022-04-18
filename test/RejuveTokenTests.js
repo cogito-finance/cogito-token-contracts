@@ -151,8 +151,8 @@ contract('RejuveToken', function(accounts) {
         // Check for the Initial Supply which Should be Zero
         await getInitialSupplyAndVerify(0);
 
-        // Check for the Configured Decimals - Should be 18
-        await getDecimalsAndVerify(18);
+        // Check for the Configured Decimals - Should be 6
+        await getDecimalsAndVerify(6);
 
     });
 
@@ -160,7 +160,7 @@ contract('RejuveToken', function(accounts) {
     {
         // accounts[0] -> Contract Owner
 
-        const factor = (new BigNumber(10)).pow(18);  
+        const factor = (new BigNumber(10)).pow(6);  
         // Mint 1B/2 or 500M tokens
         const mintAmountBN = (new BigNumber("500000000")).times(factor);
 
@@ -177,7 +177,7 @@ contract('RejuveToken', function(accounts) {
         // accounts[0] -> Contract Owner
 
         // Transfer 1M tokens
-        const transferAmountBN = new BigNumber("100000000000000");
+        const transferAmountBN = new BigNumber("1000000000000");
         await transferAndVerify(accounts[0], accounts[1], transferAmountBN.toString());
 
     });
@@ -191,7 +191,7 @@ contract('RejuveToken', function(accounts) {
         await pauseContractAndVerify(accounts[0]);
 
         // Transfer should fail
-        const transferAmountBN = new BigNumber("100000000000000");
+        const transferAmountBN = new BigNumber("1000000000000");
         await testErrorRevert(transferAndVerify(accounts[0], accounts[1], transferAmountBN.toString()));
 
         // UnPause the Contract Again
@@ -226,7 +226,7 @@ contract('RejuveToken', function(accounts) {
         await grantMinterRole(accounts[0], accounts[8])
 
         // Mint 1B/2 or 500M tokens with the Minter Account
-        const factor = (new BigNumber(10)).pow(18);  
+        const factor = (new BigNumber(10)).pow(6);  
         // Mint 1B/2 or 500M tokens
         const mintAmountBN = (new BigNumber("500000000")).times(factor);
 

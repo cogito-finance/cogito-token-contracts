@@ -24,7 +24,7 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    uint256 public constant MAX_SUPPLY = 1000000000 * 10**uint256(18);
+    uint256 public constant MAX_SUPPLY = 1000000000 * 10**uint256(6);
 
     /**
      * @dev Grants `DEFAULT_ADMIN_ROLE`, `MINTER_ROLE` and `PAUSER_ROLE` to the
@@ -38,8 +38,8 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
         _setupRole(MINTER_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _msgSender());
 
-        // Setting Demcimal Places to 18
-        _setupDecimals(18);
+        // Setting Demcimal Places to 6
+        _setupDecimals(6);
     }
 
     /**
