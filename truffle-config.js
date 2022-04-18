@@ -104,6 +104,13 @@ module.exports = {
   mocha: {
     // timeout: 100000
   },
+  plugins: [
+      'truffle-plugin-verify',
+      'solidity-coverage'
+        ],
+  api_keys: {
+      etherscan: process.env.EtherScanKey
+  },
 
   // Configure your compilers
   compilers: {
