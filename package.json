@@ -24,7 +24,7 @@
   },
   "homepage": "https://gitlab.com/rejuve/rejuve-token-contracts#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^3.2.0",
+    "@openzeppelin/contracts": "^4.8.1",
     "@truffle/contract": "^4.2.23",
     "@truffle/hdwallet-provider": "^1.1.0",
     "solidity-coverage": "^0.7.20",

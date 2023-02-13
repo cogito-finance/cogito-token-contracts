@@ -1,10 +1,10 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/GSN/Context.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20Burnable.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20Pausable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
  * @dev {ERC20} token, including:
@@ -20,7 +20,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20Pausable.sol";
  * roles, as well as the default admin role, which will let it grant both minter
  * and pauser roles to other accounts.
  */
-contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
+contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
@@ -32,15 +32,28 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
      *
      * See {ERC20-constructor}.
      */
-    constructor(string memory name, string memory symbol) public ERC20(name, symbol) {
-        _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
+    constructor(string memory name, string memory symbol) ERC20(name, symbol) {
 
-        _setupRole(MINTER_ROLE, _msgSender());
-        _setupRole(PAUSER_ROLE, _msgSender());
+        _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
 
-        // Setting Demcimal Places to 6
-        _setupDecimals(6);
+        _grantRole(MINTER_ROLE, _msgSender());
+        _grantRole(PAUSER_ROLE, _msgSender());
+
     }
+
+    /**
+     * @dev Set the decimals to 6 decimals.
+     *
+     * See {ERC20-decimals}.
+     *
+     * Requirements:
+     *
+     * - The Rejuve token should be 6 decimals instead of default decimals. This is only for display purpose.
+     */
+    function decimals() public view virtual override returns (uint8) {
+        return 6;
+    }
+
 
     /**
      * @dev Creates `amount` new tokens for `to`.
@@ -51,9 +64,9 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
      *
      * - the caller must have the `MINTER_ROLE`.
      */
-    function mint(address to, uint256 amount) public virtual {
+    function mint(address to, uint256 amount) public {
         require(hasRole(MINTER_ROLE, _msgSender()), "ERC20PresetMinterPauser: must have minter role to mint");
-        require(totalSupply().add(amount) <= MAX_SUPPLY, "Mint: Cannot mint more than initial supply");
+        require((totalSupply() + amount) <= MAX_SUPPLY, "Mint: Cannot mint more than initial supply");
         _mint(to, amount);
     }
 
@@ -66,7 +79,7 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
      *
      * - the caller must have the `PAUSER_ROLE`.
      */
-    function pause() public virtual {
+    function pause() public {
         require(hasRole(PAUSER_ROLE, _msgSender()), "ERC20PresetMinterPauser: must have pauser role to pause");
         _pause();
     }
@@ -80,12 +93,12 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, ERC20Pausable {
      *
      * - the caller must have the `PAUSER_ROLE`.
      */
-    function unpause() public virtual {
+    function unpause() public {
         require(hasRole(PAUSER_ROLE, _msgSender()), "ERC20PresetMinterPauser: must have pauser role to unpause");
         _unpause();
     }
 
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override(ERC20, ERC20Pausable) {
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal whenNotPaused  override {
         super._beforeTokenTransfer(from, to, amount);
     }
 }
