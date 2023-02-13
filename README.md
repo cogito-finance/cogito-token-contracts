@@ -1,3 +1,14 @@
+#Smart contract requirements:
+* Smart contract of the EPC-20 standard token;
+* The maximum number of tokens is 1.000.000.000;
+* Long name of the token: Rejuve token;
+* Short name of the token: RJV;
+* Decimal - 6;
+* Mint token function;
+* Functions of pause mint token, and unpause mint token;
+
+The functions of the mint token are necessary for the correct operation of the bridge between the Ethereum network and Cardano. As a result, the total number of tokens in both networks will not exceed 1,000,000,000 units. When installing a smart contract, a gradual release of tokens is assumed, and not a one-time one, which also determines the need for the token mint function.
+
 # rejuve-token-contracts
 Includes token contracts, migrations, tests
 
