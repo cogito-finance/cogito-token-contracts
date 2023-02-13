@@ -1,4 +1,4 @@
-#Smart contract requirements:
+# Smart contract requirements:
 * Smart contract of the EPC-20 standard token;
 * The maximum number of tokens is 1.000.000.000;
 * Long name of the token: Rejuve token;
