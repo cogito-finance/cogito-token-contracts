@@ -33,12 +33,9 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
      * See {ERC20-constructor}.
      */
     constructor(string memory name, string memory symbol) ERC20(name, symbol) {
-
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
         _grantRole(MINTER_ROLE, _msgSender());
         _grantRole(PAUSER_ROLE, _msgSender());
-
     }
 
     /**
@@ -53,7 +50,6 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
     function decimals() public view virtual override returns (uint8) {
         return 6;
     }
-
 
     /**
      * @dev Creates `amount` new tokens for `to`.
@@ -98,7 +94,7 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
         _unpause();
     }
 
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal whenNotPaused  override {
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override whenNotPaused {
         super._beforeTokenTransfer(from, to, amount);
     }
 }
