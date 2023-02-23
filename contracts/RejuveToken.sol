@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity 0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
@@ -36,19 +36,6 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _grantRole(MINTER_ROLE, _msgSender());
         _grantRole(PAUSER_ROLE, _msgSender());
-    }
-
-    /**
-     * @dev Set the decimals to 6 decimals.
-     *
-     * See {ERC20-decimals}.
-     *
-     * Requirements:
-     *
-     * - The Rejuve token should be 6 decimals instead of default decimals. This is only for display purpose.
-     */
-    function decimals() public view virtual override returns (uint8) {
-        return 6;
     }
 
     /**
@@ -92,6 +79,19 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
     function unpause() public {
         require(hasRole(PAUSER_ROLE, _msgSender()), "ERC20PresetMinterPauser: must have pauser role to unpause");
         _unpause();
+    }
+
+    /**
+     * @dev Set the decimals to 6 decimals.
+     *
+     * See {ERC20-decimals}.
+     *
+     * Requirements:
+     *
+     * - The Rejuve token should be 6 decimals instead of default decimals. This is only for display purpose.
+     */
+    function decimals() public view virtual override returns (uint8) {
+        return 6;
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal override whenNotPaused {
