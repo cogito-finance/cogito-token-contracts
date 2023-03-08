@@ -1,7 +1,7 @@
 # Smart contract requirements:
 * Smart contract of the EPC-20 standard token;
 * The maximum number of tokens is 1.000.000.000;
-* Long name of the token: Rejuve token;
+* Long name of the token: Rejuve Token;
 * Short name of the token: RJV;
 * Decimal - 6;
 * Mint token function;
@@ -13,15 +13,14 @@ The functions of the mint token are necessary for the correct operation of the b
 Includes token contracts, migrations, tests
 
 ### RejuveToken
-* ERC-20 implementation for Rejuve TBD Token
+* ERC-20 implementation for Rejuve Token RJV
 
 ## Deployed Contracts
-* RejuveToken (Mainnet): 
-* RejuveToken (Kovan): 
-* RejuveToken (Ropsten) : 
+* RejuveToken (Mainnet): [0x02c3296C6eb50249f290AE596F2bE9454bFfadaB](https://etherscan.io/address/0x02c3296c6eb50249f290ae596f2be9454bffadab)
+
 
 ## Requirements
-* [Node.js](https://github.com/nodejs/node) (12+)
+* [Node.js](https://github.com/nodejs/node) (16+)
 * [Npm](https://www.npmjs.com/package/npm)
 
 ## Install
@@ -42,7 +41,7 @@ npm run package-npm
 ```
 
 ## Release
-RejuveToken artifacts are published to NPM: https://www.npmjs.com/package/rejuve-token-contracts
+RejuveToken artifacts are published to NPM: https://www.npmjs.com/package/@rejuve/rejuve-token-contracts
 =======
-ERC-20 implementation for Rejuve TBD Token
+ERC-20 implementation for Rejuve Token RJV
 
