@@ -13,7 +13,7 @@ The functions of the mint token are necessary for the correct operation of the b
 Includes token contracts, migrations, tests
 
 ### Cogito Governance Token
-* ERC-20 implementation for Cogito Governance Token  CGV
+* ERC-20 implementation for Cogito Governance Token CGV
 
 ## Deployed Contracts
 * TBD
