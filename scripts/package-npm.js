@@ -12,11 +12,11 @@ const mapDirs = {
 // source file relative to repo root => dest file relative to module root
 //                                or => key to extract from source file => dest file relative to module root
 const mapFiles = {
-    "contracts/RejuveToken.sol":  "sol/RejuveToken.sol",
-    "build/contracts/RejuveToken.json": {
-        "abi": "abi/RejuveToken.json",
-        "networks": "networks/RejuveToken.json",
-        "bytecode": "bytecode/RejuveToken.json"
+    "contracts/CogitoGovernanceToken.sol":  "sol/CogitoGovernanceToken.sol",
+    "build/contracts/CogitoGovernanceToken.json": {
+        "abi": "abi/CogitoGovernanceToken.json",
+        "networks": "networks/CogitoGovernanceToken.json",
+        "bytecode": "bytecode/CogitoGovernanceToken.json"
     },
     "README.md": "README.md",
     "LICENSE": "LICENSE"
