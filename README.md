@@ -9,10 +9,10 @@
 
 The functions of the mint token are necessary for the correct operation of the bridge between the Ethereum network and Cardano. As a result, the total number of tokens in both networks will not exceed 1,000,000,000 units. When installing a smart contract, a gradual release of tokens is assumed, and not a one-time one, which also determines the need for the token mint function.
 
-# rejuve-token-contracts
+# cogito-token-contracts
 Includes token contracts, migrations, tests
 
-### RejuveToken
+### Cogito Governance Token
 * ERC-20 implementation for Cogito Governance Token  CGV
 
 ## Deployed Contracts
