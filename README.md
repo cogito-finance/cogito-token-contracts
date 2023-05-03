@@ -1,8 +1,8 @@
 # Smart contract requirements:
-* Smart contract of the EPC-20 standard token;
+* Smart contract of the ERC-20 standard token;
 * The maximum number of tokens is 1.000.000.000;
-* Long name of the token: Rejuve Token;
-* Short name of the token: RJV;
+* Long name of the token: Cogito Governance Token;
+* Short name of the token: CGV;
 * Decimal - 6;
 * Mint token function;
 * Functions of pause is to pause/unpause the transfers on the contract;
@@ -13,10 +13,10 @@ The functions of the mint token are necessary for the correct operation of the b
 Includes token contracts, migrations, tests
 
 ### RejuveToken
-* ERC-20 implementation for Rejuve Token RJV
+* ERC-20 implementation for Cogito Governance Token  CGV
 
 ## Deployed Contracts
-* RejuveToken (Mainnet): [0x02c3296C6eb50249f290AE596F2bE9454bFfadaB](https://etherscan.io/address/0x02c3296c6eb50249f290ae596f2be9454bffadab)
+* TBD
 
 
 ## Requirements
@@ -41,7 +41,7 @@ npm run package-npm
 ```
 
 ## Release
-RejuveToken artifacts are published to NPM: https://www.npmjs.com/package/@rejuve/rejuve-token-contracts
+Cogito Governance Token artifacts are published to NPM: TBD
 =======
-ERC-20 implementation for Rejuve Token RJV
+ERC-20 implementation for Cogito Governance Token CGV
 
