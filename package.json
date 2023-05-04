@@ -1,6 +1,6 @@
 {
-  "name": "rejuve-token-contracts",
-  "version": "0.1.0",
+  "name": "@cogitoprotocol/cogito-token-contracts",
+  "version": "1.0.0",
   "private": true,
   "description": "Includes token contracts, migrations, tests",
   "directories": {
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/rejuve/rejuve-token-contracts.git"
+    "url": "git+https://gitlab.com/cogitoprotocol/cogito-token-contracts.git"
   },
-  "author": "Rejuve",
+  "author": "Cogito",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/rejuve/rejuve-token-contracts/issues"
+    "url": "https://gitlab.com/cogitoprotocol/cogito-token-contracts/issues"
   },
-  "homepage": "https://gitlab.com/rejuve/rejuve-token-contracts#readme",
+  "homepage": "https://gitlab.com/cogitoprotocol/cogito-token-contracts#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.1",
     "@truffle/contract": "^4.2.23",

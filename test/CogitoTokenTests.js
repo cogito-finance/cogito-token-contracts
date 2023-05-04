@@ -1,6 +1,6 @@
 "use strict";
 let BigNumber = require("bignumber.js");
-var  RejuveToken = artifacts.require("./RejuveToken.sol");
+var CGVToken = artifacts.require("./CogitoGovernanceToken.sol");
 
 let Contract = require("@truffle/contract");
 const { assert } = require("chai");
@@ -19,25 +19,25 @@ async function testErrorRevert(prom)
     assert(rezE >= 0, "Must generate error and error message must contain revert");
 }
   
-contract('RejuveToken', function(accounts) {
+contract('CGVToken', function(accounts) {
 
-    var rejuveToken;
+    var cgvToken;
     
     before(async () => 
         {
-            rejuveToken = await RejuveToken.deployed();
+            cgvToken = await CGVToken.deployed();
         });
 
         const getInitialSupplyAndVerify = async (_totalSupply) => {
             
-            const totalSupply = await rejuveToken.totalSupply.call()
+            const totalSupply = await cgvToken.totalSupply.call()
 
             assert.equal(totalSupply.toNumber(), _totalSupply);
         }
 
         const getDecimalsAndVerify = async (_decimals) => {
 
-            const decimals = await rejuveToken.decimals.call()
+            const decimals = await cgvToken.decimals.call()
 
             assert.equal(decimals.toNumber(), _decimals);
 
@@ -45,15 +45,15 @@ contract('RejuveToken', function(accounts) {
 
         const mintAndVerify = async (_account, _amount) => {
 
-            const totalSupply_b = await rejuveToken.totalSupply.call()
-            const wallet_bal_b = (await rejuveToken.balanceOf(_account));
+            const totalSupply_b = await cgvToken.totalSupply.call()
+            const wallet_bal_b = (await cgvToken.balanceOf(_account));
 
             const _amountBN = new BigNumber(_amount);
 
-            await rejuveToken.mint(_account, _amountBN, {from:_account})
+            await cgvToken.mint(_account, _amountBN, {from:_account})
 
-            const totalSupply_a = await rejuveToken.totalSupply.call();
-            const wallet_bal_a = (await rejuveToken.balanceOf(_account));
+            const totalSupply_a = await cgvToken.totalSupply.call();
+            const wallet_bal_a = (await cgvToken.balanceOf(_account));
 
             assert.equal(_amountBN.plus(totalSupply_b).isEqualTo(totalSupply_a), true);
             assert.equal(_amountBN.plus(wallet_bal_b).isEqualTo(wallet_bal_a), true);
@@ -64,13 +64,13 @@ contract('RejuveToken', function(accounts) {
 
             const _amountBN = new BigNumber(_amount);
 
-            const sender_bal_b = (await rejuveToken.balanceOf(_accountFrom));
-            const receiver_bal_b = (await rejuveToken.balanceOf(_accountTo));
+            const sender_bal_b = (await cgvToken.balanceOf(_accountFrom));
+            const receiver_bal_b = (await cgvToken.balanceOf(_accountTo));
 
-            await rejuveToken.transfer(_accountTo, _amountBN.toString(), {from:_accountFrom})
+            await cgvToken.transfer(_accountTo, _amountBN.toString(), {from:_accountFrom})
 
-            const sender_bal_a = (await rejuveToken.balanceOf(_accountFrom));
-            const receiver_bal_a = (await rejuveToken.balanceOf(_accountTo));
+            const sender_bal_a = (await cgvToken.balanceOf(_accountFrom));
+            const receiver_bal_a = (await cgvToken.balanceOf(_accountTo));
 
             assert.equal(_amountBN.plus(receiver_bal_b).isEqualTo(receiver_bal_a), true);
             assert.equal(_amountBN.plus(sender_bal_a).isEqualTo(sender_bal_b), true);
@@ -79,16 +79,16 @@ contract('RejuveToken', function(accounts) {
 
         const pauseContractAndVerify = async (_accountFrom) => {
 
-            await rejuveToken.pause({from:_accountFrom});
-            const paused = (await rejuveToken.paused());
+            await cgvToken.pause({from:_accountFrom});
+            const paused = (await cgvToken.paused());
 
             assert.equal(paused, true);
         }
         
         const unPauseContractAndVerify = async (_accountFrom) => {
 
-            await rejuveToken.unpause({from:_accountFrom});
-            const paused = (await rejuveToken.paused());
+            await cgvToken.unpause({from:_accountFrom});
+            const paused = (await cgvToken.paused());
 
             assert.equal(paused, false);
 
@@ -98,13 +98,13 @@ contract('RejuveToken', function(accounts) {
 
             const _amountBN = new BigNumber(_amount);
 
-            const totalSupply_b = await rejuveToken.totalSupply.call();
-            const sender_bal_b = (await rejuveToken.balanceOf(_accountFrom));
+            const totalSupply_b = await cgvToken.totalSupply.call();
+            const sender_bal_b = (await cgvToken.balanceOf(_accountFrom));
 
-            await rejuveToken.burn(_amountBN.toString(), {from:_accountFrom});
+            await cgvToken.burn(_amountBN.toString(), {from:_accountFrom});
 
-            const sender_bal_a = (await rejuveToken.balanceOf(_accountFrom));
-            const totalSupply_a = await rejuveToken.totalSupply.call()
+            const sender_bal_a = (await cgvToken.balanceOf(_accountFrom));
+            const totalSupply_a = await cgvToken.totalSupply.call()
 
             assert.equal(_amountBN.plus(totalSupply_a).isEqualTo(totalSupply_b), true);
             assert.equal(_amountBN.plus(sender_bal_a).isEqualTo(sender_bal_b), true);
@@ -113,20 +113,20 @@ contract('RejuveToken', function(accounts) {
 
         const getPauserRole = async () => {
 
-            return await rejuveToken.PAUSER_ROLE.call();
+            return await cgvToken.PAUSER_ROLE.call();
         }
 
         const grantPauseRole = async (_accountFrom, _pauserAccount) => {
 
             const pauseRole = await getPauserRole();
-            await rejuveToken.grantRole(pauseRole, _pauserAccount, {from:_accountFrom});
+            await cgvToken.grantRole(pauseRole, _pauserAccount, {from:_accountFrom});
 
         }
 
         const grantMinterRole = async (_accountFrom, _minterAccount) => {
 
-            const minterRole = await rejuveToken.MINTER_ROLE.call();
-            await rejuveToken.grantRole(minterRole, _minterAccount, {from:_accountFrom});
+            const minterRole = await cgvToken.MINTER_ROLE.call();
+            await cgvToken.grantRole(minterRole, _minterAccount, {from:_accountFrom});
 
         }
 
@@ -165,7 +165,7 @@ contract('RejuveToken', function(accounts) {
         const mintAmountBN = (new BigNumber("500000000")).times(factor);
 
         // Test minting with a different Account - Should Fail
-        await testErrorRevert(rejuveToken.mint(accounts[1], mintAmountBN, {from:accounts[1]}));        
+        await testErrorRevert(cgvToken.mint(accounts[1], mintAmountBN, {from:accounts[1]}));        
         
         await mintAndVerify(accounts[0], mintAmountBN.toString());
 
@@ -198,7 +198,7 @@ contract('RejuveToken', function(accounts) {
         await unPauseContractAndVerify(accounts[0]);
 
         // Only the Owner or with Pauser Role should be able to pause the Contract
-        await testErrorRevert(rejuveToken.pause({from:accounts[1]}));
+        await testErrorRevert(cgvToken.pause({from:accounts[1]}));
 
     });
     
@@ -236,7 +236,7 @@ contract('RejuveToken', function(accounts) {
         const mintAdditionalAmtBN = (new BigNumber("10000000")).times(factor);
 
         // Should not mint more tokens than Max Supply
-        await testErrorRevert(rejuveToken.mint(accounts[0], mintAdditionalAmtBN, {from:accounts[8]}));
+        await testErrorRevert(cgvToken.mint(accounts[0], mintAdditionalAmtBN, {from:accounts[8]}));
 
     });
 

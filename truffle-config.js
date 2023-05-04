@@ -93,7 +93,7 @@ module.exports = {
         network_id: "3", // ropsten network ID, 
     },
     main: {
-      gasPrice: 70000000000,
+      gasPrice: 30000000000,
       provider: () => provider("https://mainnet.infura.io/v3/" + process.env.InfuraKey),
       network_id: "1" // mainnet network ID
     },

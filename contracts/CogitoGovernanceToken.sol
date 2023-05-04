@@ -20,7 +20,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
  * roles, as well as the default admin role, which will let it grant both minter
  * and pauser roles to other accounts.
  */
-contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
+contract CogitoGovernanceToken is Context, AccessControl, ERC20Burnable, Pausable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
@@ -88,7 +88,7 @@ contract RejuveToken is Context, AccessControl, ERC20Burnable, Pausable {
      *
      * Requirements:
      *
-     * - The Rejuve token should be 6 decimals instead of default decimals. This is only for display purpose.
+     * - The Cogito Governance Token should be 6 decimals instead of default decimals. This is only for display purpose.
      */
     function decimals() public view virtual override returns (uint8) {
         return 6;
