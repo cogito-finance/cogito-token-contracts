@@ -3,7 +3,7 @@
 * The maximum number of tokens is 1.000.000.000;
 * Long name of the token: Cogito Governance Token;
 * Short name of the token: CGV;
-* Decimal - 6;
+* Decimal - 18;
 * Mint token function;
 * Functions of pause is to pause/unpause the transfers on the contract;
 
@@ -25,6 +25,11 @@ Includes token contracts, migrations, tests
 
 ## Install
 
+### Install truffle
+```bash
+npm install -g truffle
+```
+
 ### Dependencies
 ```bash
 npm install
@@ -32,7 +37,7 @@ npm install
 
 ### Test 
 ```bash
-npm run test
+truffle test
 ```
 
 ## Package

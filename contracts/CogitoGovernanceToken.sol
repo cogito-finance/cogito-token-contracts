@@ -24,7 +24,7 @@ contract CogitoGovernanceToken is Context, AccessControl, ERC20Burnable, Pausabl
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    uint256 public constant MAX_SUPPLY = 1000000000 * 10**uint256(6);
+    uint256 public constant MAX_SUPPLY = 1000000000 * 10**uint256(18);
 
     /**
      * @dev Grants `DEFAULT_ADMIN_ROLE`, `MINTER_ROLE` and `PAUSER_ROLE` to the
@@ -91,7 +91,7 @@ contract CogitoGovernanceToken is Context, AccessControl, ERC20Burnable, Pausabl
      * - The Cogito Governance Token should be 6 decimals instead of default decimals. This is only for display purpose.
      */
     function decimals() public view virtual override returns (uint8) {
-        return 6;
+        return 18;
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal override whenNotPaused {
