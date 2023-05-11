@@ -81,7 +81,7 @@ contract CogitoGovernanceToken is Context, AccessControl, ERC20Burnable, Pausabl
         _unpause();
     }
 
-     /**
+    /**
      * @dev Set the decimals to 6 decimals.
      *
      * See {ERC20-decimals}.
