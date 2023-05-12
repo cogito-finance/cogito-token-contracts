@@ -25,6 +25,11 @@ Includes token contracts, migrations, tests
 
 ## Install
 
+### Install truffle
+```bash
+npm install -g truffle
+```
+
 ### Dependencies
 ```bash
 npm install
@@ -32,7 +37,7 @@ npm install
 
 ### Test 
 ```bash
-npm run test
+truffle test
 ```
 
 ## Package
