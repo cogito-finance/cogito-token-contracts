@@ -16,7 +16,9 @@ Includes token contracts, migrations, tests
 * ERC-20 implementation for Cogito Governance Token CGV
 
 ## Deployed Contracts
-* TBD
+* Ethereum Mainnet: [0xaeF420fd77477d9Dc8B46D704D44dD09d6c27866](https://etherscan.io/address/0xaeF420fd77477d9Dc8B46D704D44dD09d6c27866)
+* Ethereum Goerli: [0x033c4655babc35898ee9c15e15177bf68bda68ac](https://goerli.etherscan.io/address/0x033c4655babc35898ee9c15e15177bf68bda68ac)
+* Ethereum Seploia: [0x5b0331dff07e9e11960a1cf03acacec5af263d09](https://sepolia.etherscan.io/address/0x5b0331dff07e9e11960a1cf03acacec5af263d09)
 
 
 ## Requirements
