@@ -16,7 +16,8 @@ Includes token contracts, migrations, tests
 * ERC-20 implementation for Cogito Governance Token CGV
 
 ## Deployed Contracts
-* TBD
+* Ethereum Mainnet: [0xaeF420fd77477d9Dc8B46D704D44dD09d6c27866 (ERC-20)](https://etherscan.io/address/0xaeF420fd77477d9Dc8B46D704D44dD09d6c27866)
+* Binance Smart Chain: [0x1bDaF9ddD7658d8049391971d1fd48c0484F66EC (BEP-20)](https://bscscan.com/token/0x1bdaf9ddd7658d8049391971d1fd48c0484f66ec)
 
 
 ## Requirements
